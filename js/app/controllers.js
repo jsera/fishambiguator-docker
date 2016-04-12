@@ -32,7 +32,23 @@ angular.module("FishCtrls", [])
 
     $scope.updatePic = function($event, pic) {
         $event.preventDefault();
-        console.log("This is the pic: ", pic);
+        pic.btnDisabled = true;
+
+        var req = {
+            url: "/api/pictures/"+pic.id,
+            method: "PUT",
+            data: pic
+        };
+
+        $http(req).then(function(res) {
+            pic.btnDisabled = false;
+            if (res.status === 200) {
+                pic.url = res.data.url;
+                pic.caption = res.data.caption;
+            } else {
+                console.log("Problem updating pic", res);
+            }
+        });
     };
 
     $scope.deletePic = function($event, pic) {
