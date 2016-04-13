@@ -103,4 +103,34 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
         fishpics: [],
         genus: {}
     };
+}])
+
+.controller("PairAddCtrl", ["$scope", "$http", function($scope, $http) {
+
+}])
+
+.controller("FishFindCtrl", ["$scope", "$http", function($scope, $http) {
+    $scope.commonname = "";
+    $scope.loadingFish = false;
+    $scope.noResults = false;
+
+    $scope.autocompleteCommonName = function(query) {
+        var req = {
+            method: "GET",
+            url: "/api/fish/autocomplete",
+            params:{
+                q:query
+            }
+        };
+
+        return $http(req).then(function(res){
+            if (res.data.map) {
+                return res.data.map(function(fish) {
+                    return fish.namematch;
+                });
+            } else {
+                return [];
+            }
+        });
+    };
 }]);
