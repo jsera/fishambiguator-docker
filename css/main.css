@@ -5,4 +5,9 @@
     display: inline-block;
     margin: 0.5rem; }
 
+.pic-carousel {
+  width: 500px; }
+  .pic-carousel img {
+    width: 100%; }
+
 /*# sourceMappingURL=main.css.map */

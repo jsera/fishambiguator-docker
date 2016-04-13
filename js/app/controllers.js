@@ -1,4 +1,4 @@
-angular.module("FishCtrls", [])
+angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
 
 .controller("EditCtrl", ["$scope", "$http", function($scope, $http) {
     $scope.fish = {
@@ -95,5 +95,12 @@ angular.module("FishCtrls", [])
                 console.log("Problem creating new pic: ", res);
             }
         });
+    };
+}])
+
+.controller("SpecificFishCtrl", ["$scope", function($scope) {
+    $scope.fish = {
+        fishpics: [],
+        genus: {}
     };
 }]);
