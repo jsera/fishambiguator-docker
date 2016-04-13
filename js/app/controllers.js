@@ -89,8 +89,8 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
                 res.data.btnDisabled = false;
                 $scope.fish.fishpics.push(res.data);
                 console.log("New pic: "+res.data);
-                $scope.newPicURL = "";
-                $scope.newPicCaption = "";
+                $scope.newPic.url = "";
+                $scope.newPic.caption = "";
             } else {
                 console.log("Problem creating new pic: ", res);
             }
