@@ -17,8 +17,26 @@
 }
 
 .fish-finder {
-    .form-control {
-        display: inline;
-        width: 50%;
+    .search-box {
+        input {
+            display: inline;
+            width: 300px;
+        }
+
+        button {
+            display: inline;
+        }
+    }
+
+    .no-results {
+        position: absolute;
+        top: 1;
+        padding: 5px 10px;
+        margin: 2px 0 0;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
 }
