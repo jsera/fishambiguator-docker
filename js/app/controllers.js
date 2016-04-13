@@ -113,6 +113,8 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
     $scope.commonname = "";
     $scope.loadingFish = false;
     $scope.noResults = false;
+    $scope.loadingBinomial = false;
+    $scope.noBinomialResults = false;
 
     $scope.autocompleteCommonName = function(query) {
         var req = {
@@ -132,5 +134,33 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
                 return [];
             }
         });
+    };
+
+    $scope.autocompleteBinomial = function(query) {
+        var req = {
+            method: "GET",
+            url: "/api/genus/autocomplete",
+            params:{
+                q:query
+            }
+        };
+
+        return $http(req).then(function(res) {
+            if (res.data.map) {
+                return res.data.map(function(fish) {
+                    return fish.genus.name + " " + fish.species;
+                });
+            } else {
+                return [];
+            }
+        });
+    };
+
+    $scope.searchByCommonName = function($event) {
+        $event.preventDefault();
+    };
+
+    $scope.searchByBinomial = function($event) {
+        $event.preventDefault();
     };
 }]);
