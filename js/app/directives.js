@@ -1,6 +1,6 @@
-angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap"])
+angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap", "FishServices"])
 
-.controller("FishFindCtrl", ["$scope", "$http", function($scope, $http) {
+.controller("FishFindCtrl", ["$scope", "$http", "PairService", function($scope, $http, PairService) {
     $scope.commonname = "";
     $scope.binomialname = "";
     $scope.loadingFish = false;
@@ -10,6 +10,8 @@ angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap"])
     $scope.noFishFound = false;
     $scope.fishFound = false;
     $scope.fish = {};
+    // Used for the event that gets fired when we select a fish
+    var senderId = $scope.senderId;
 
     var formatNames = function(fish) {
         fish.binomialName = fish.genus.name + " " + fish.species;
@@ -73,6 +75,7 @@ angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap"])
             if (res.data.results && res.data.results.join) {
                 $scope.fishFound = !($scope.noFishFound = false);
                 $scope.fish = formatNames(res.data.results[0]);
+                PairService.setPairID(senderId, res.data.results[0].id);
             } else {
                 $scope.fishFound = !($scope.noFishFound = true);
             }
@@ -97,6 +100,7 @@ angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap"])
             if (res.data.results && res.data.results.join) {
                 $scope.fishFound = !($scope.noFishFound = false);
                 $scope.fish = formatNames(res.data.results[0]);
+                PairService.setPairID(senderId, res.data.results[0].id);
             } else {
                 $scope.fishFound = !($scope.noFishFound = true);
             }
@@ -108,7 +112,11 @@ angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap"])
 
 .directive("fishFinder", function() {
     return {
+        restrict: "E",
         templateUrl: "tpl-fish-finder",
-        controller: "FishFindCtrl"
+        controller: "FishFindCtrl",
+        scope: {
+            senderId: "@"
+        }
     };
 });

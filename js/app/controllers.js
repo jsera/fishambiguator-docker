@@ -1,4 +1,4 @@
-angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
+angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap", "FishServices"])
 
 .controller("EditCtrl", ["$scope", "$http", function($scope, $http) {
     $scope.fish = {
@@ -105,6 +105,8 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap"])
     };
 }])
 
-.controller("PairAddCtrl", ["$scope", "$http", function($scope, $http) {
-
+.controller("PairAddCtrl", ["$scope", "$http", "PairService", function($scope, $http, PairService) {
+    PairService.addListener(function(pairs) {
+        console.log("Got pairs: ", pairs);
+    });
 }]);
