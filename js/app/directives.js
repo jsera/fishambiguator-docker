@@ -108,6 +108,11 @@ angular.module("FishDirectives", ["ngAnimate", "ui.bootstrap", "FishServices"])
             $scope.fishFound = !($scope.noFishFound = true);
         });
     };
+
+    $scope.closeNoResults = function() {
+        $scope.noBinomialResults = false;
+        $scope.noResults = false;
+    };
 }])
 
 .directive("fishFinder", function() {

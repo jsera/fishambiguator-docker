@@ -1,1 +1,1 @@
-angular.module("FishApp", ["FishCtrls", "FishDirectives"]);
+angular.module("FishApp", ["FishCtrls", "FishDirectives", "CommentEditor"]);

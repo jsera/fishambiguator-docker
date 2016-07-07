@@ -108,5 +108,6 @@ angular.module("FishCtrls", ["ngAnimate", "ui.bootstrap", "FishServices"])
 .controller("PairAddCtrl", ["$scope", "$http", "PairService", function($scope, $http, PairService) {
     PairService.addListener(function(pairs) {
         console.log("Got pairs: ", pairs);
+        // set the pair here
     });
 }]);
