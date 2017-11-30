@@ -1,0 +1,33 @@
+.name-list {
+  list-style-type: none; }
+  .name-list li {
+    font-size: 2rem;
+    display: inline-block;
+    margin: 0.5rem; }
+
+.pic-carousel {
+  width: 500px; }
+  .pic-carousel img {
+    width: 100%; }
+
+.fish-finder .search-box input {
+  display: inline;
+  width: 300px; }
+.fish-finder .search-box button {
+  display: inline; }
+.fish-finder .no-results {
+  position: absolute;
+  top: 1;
+  padding: 5px 10px;
+  margin: 2px 0 0;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
+
+.pair-add > div {
+  float: left;
+  width: 33%; }
+
+/*# sourceMappingURL=main.css.map */

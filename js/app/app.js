@@ -1,0 +1,1 @@
+angular.module("FishApp", ["FishCtrls", "FishDirectives", "CommentEditor"]);
