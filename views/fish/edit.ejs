@@ -1,0 +1,34 @@
+<div ng-controller="EditCtrl" ng-init="fish.fishpics = <%= JSON.stringify(fish.fishpics) %>; ids.userId = <%= currentUser.id %>;">
+	<h1>FISH EDIT!!!!</h1>
+	<form method="POST" action="<%= action %>" ng-submit="editNames($event)">
+		<% include form_name %>
+		<input type="submit" class="btn btn-primary" ng-disabled="nameDisabled" value="Edit names" />
+		<input type="hidden" ng-model="fish.fishId" ng-init="fish.id = <%= fish.id %>" />
+	</form>
+    <h2>Pictures</h2>
+    <form class="pic-form" ng-repeat="pic in fish.fishpics track by $index" ng-init="pic.btnDisabled = false">
+        <img ng-src="{{pic.url}}" width="600" />
+        <div>
+            <label for="pic{{$index}}">URL:</label>
+            <input type="text" ng-model="pic.url" id="pic{{$index}}" name="url" />
+        </div>
+        <div>
+            <label for="caption{{$index}}">Caption:</label>
+            <input type="text" ng-model="pic.caption" id="caption{{$index}}" name="caption" />
+        </div>
+        <button class="btn btn-primary" ng-click="updatePic($event, pic)" ng-disabled="pic.btnDisabled">Update</button>
+        <button class="btn btn-secondary" ng-click="deletePic($event, pic)" ng-disabled="pic.btnDisabled">Delete</button>
+    </form>
+    <h2>Add a picture!</h2>
+    <form class="pic-form">
+        <div>
+            <label for="newPicURL">URL:</label>
+            <input type="text" ng-model="newPic.url" id="newPicURL" name="url" />
+        </div>
+        <div>
+            <label for="newPicCaption">Caption:</label>
+            <input type="text" ng-model="newPic.caption" id="newPicCaption" name="caption" />
+        </div>
+        <button ng-click="addPic($event)" ng-disabled="newPicDiabled">Add new pic</button>
+    </form>
+</div>
