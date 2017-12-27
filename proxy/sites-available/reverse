@@ -1,27 +1,27 @@
 # Default server. We only want people to access us through joshdev.com or subdomains.
 server {
-	listen 80;
-	return 503;
+    listen 80;
+    return 503;
 }
 
 server {
-	listen 80;
-	server_name assets.joshdev.com;
+    listen 80;
+    server_name ${STATIC_SERVER};
 
-	location / {
-		proxy_pass http://127.0.0.1:4000/;
-		proxy_set_header X-Real-IP $remote_addr;
+    location / {
+        proxy_pass http://127.0.0.1:4000/;
+        proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $http_host;
-	}
+    }
 }
 
 server {
-	listen 80;
-	server_name joshdev.com;
+    listen 80;
+    server_name ${BASE_URL};
 
-	location / {
-		proxy_pass http://127.0.0.1:3000/;
-		proxy_set_header X-Real-IP $remote_addr;
+    location / {
+        proxy_pass http://fish-node:3000/;
+        proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $http_host;
-	}
+    }
 }

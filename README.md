@@ -18,4 +18,18 @@ to run an individual set of tests.
 
 Install PostgreSQL on the host machine, run create-db.sh to create the appropriate database.
 
+The app requires a .env file for environment variables
+
+example:
+```
+BASE_URL=joshdev.com
+FACEBOOK_APP_ID=(Put the app ID here)
+FACEBOOK_API_VERSION=v2.5
+FACEBOOK_APP_SECRET=(Put the app secret here)
+STATIC_SERVER=assets.joshdev.com
+BUILD_ENV=dev
+```
+
+In /etc/hosts, set joshdev.com and assets.joshdev.com to 127.0.0.1
+
 Start the Docker containers!

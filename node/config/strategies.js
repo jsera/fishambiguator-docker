@@ -25,7 +25,7 @@ module.exports = {
   facebookStrategy: new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: process.env.BASE_URL + '/auth/facebook/callback'
+      callbackURL: process.env.PROTOCOL + process.env.BASE_URL + '/auth/facebook/callback'
     },
     function(accessToken, refreshToken, profile, done) {
       // Do we have an authprovider row?

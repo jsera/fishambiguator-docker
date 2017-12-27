@@ -7,10 +7,23 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./proxy/sites-available:/etc/nginx/sites-available
+            - ./proxy:/site-base-config
+        environment:
+            - BASE_URL=${BASE_URL}
+            - STATIC_SERVER=${STATIC_SERVER}
     fish-node:
         image: fish-node
         container_name: fish-node
         build: ./node
+        ports:
+            - "3000:3000"
         volumes: 
             - ./node:/srv/node
+        environment:
+            - BASE_URL=${BASE_URL}
+            - FACEBOOK_APP_ID=${FACEBOOK_APP_ID}
+            - FACEBOOK_API_VERSION=${FACEBOOK_API_VERSION}
+            - FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET}
+            - STATIC_SERVER=${STATIC_SERVER}
+            - BUILD_ENV=${BUILD_ENV}
+            - PROTOCOL='http://'

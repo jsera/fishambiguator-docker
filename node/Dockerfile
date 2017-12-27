@@ -7,7 +7,6 @@ RUN \
     chmod u+x /start-node-server.sh && \
     apt-get update && \
     apt-get install -y ruby && \
-    gem install foreman && \
     npm install -g -y sequelize-cli pg
 
 CMD ["/start-node-server.sh"]
