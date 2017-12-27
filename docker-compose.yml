@@ -1,0 +1,16 @@
+version: "3"
+services:
+    fish-proxy:
+        image: fish-proxy
+        container_name: fish-proxy
+        build: ./proxy
+        ports:
+            - "80:80"
+        volumes:
+            - ./proxy/sites-available:/etc/nginx/sites-available
+    fish-node:
+        image: fish-node
+        container_name: fish-node
+        build: ./node
+        volumes: 
+            - ./node:/srv/node
