@@ -15,8 +15,6 @@ services:
         image: fish-node
         container_name: fish-node
         build: ./node
-        ports:
-            - "3000:3000"
         volumes: 
             - ./node:/srv/node
         environment:
