@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "fishambiguator",
-    "host": "172.17.0.1",
+    "host": "fish-db",
     "dialect": "postgres"
   },
   "test": {

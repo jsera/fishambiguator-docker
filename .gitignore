@@ -4,3 +4,4 @@ coverage
 .DS_Store
 ./build/
 .sass-cache
+db/data/

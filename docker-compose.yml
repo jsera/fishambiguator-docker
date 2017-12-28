@@ -1,16 +1,13 @@
 version: "3"
 services:
-    fish-proxy:
-        image: fish-proxy
-        container_name: fish-proxy
-        build: ./proxy
-        ports:
-            - "80:80"
-        volumes:
-            - ./proxy:/site-base-config
+    fish-db:
+        image: fish-db
+        container_name: fish-db
+        build: ./db
         environment:
-            - BASE_URL=${BASE_URL}
-            - STATIC_SERVER=${STATIC_SERVER}
+            - PGDATA=/postgresdata
+        volumes:
+            - ./db/data:/postgresdata
     fish-node:
         image: fish-node
         container_name: fish-node
@@ -24,4 +21,19 @@ services:
             - FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET}
             - STATIC_SERVER=${STATIC_SERVER}
             - BUILD_ENV=${BUILD_ENV}
-            - PROTOCOL='http://'
+            - PROTOCOL=http://
+        depends_on:
+            - fish-db
+    fish-proxy:
+        image: fish-proxy
+        container_name: fish-proxy
+        build: ./proxy
+        ports:
+            - "80:80"
+        volumes:
+            - ./proxy:/site-base-config
+        environment:
+            - BASE_URL=${BASE_URL}
+            - STATIC_SERVER=${STATIC_SERVER}
+        depends_on:
+            - fish-node
