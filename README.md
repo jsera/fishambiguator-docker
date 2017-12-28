@@ -16,8 +16,6 @@ to run an individual set of tests.
 
 ## Setup
 
-Install PostgreSQL on the host machine, run create-db.sh to create the appropriate database.
-
 The app requires a .env file for environment variables
 
 example:
